@@ -35,6 +35,24 @@
   </li>
 </ul>
 
+<!-- 
+[hero]="selectedHero" 是 Angular 的属性绑定语法。
+这是一种单向数据绑定。
+从 HeroesComponent 的 selectedHero 属性绑定到目标元素的 hero 属性，
+并映射到了 HeroDetailComponent 的 hero 属性。
+现在，当用户在列表中点击某个英雄时，selectedHero 就改变了。 
+当 selectedHero 改变时，属性绑定会修改 HeroDetailComponent 的 hero 属性，HeroDetailComponent 就会显示这个新的英雄。 
+-->
+
+<!-- 
+你通过缩减 HeroesComponent 的职责简化了该组件。
+你可以把 HeroDetailComponent 改进成一个功能丰富的英雄编辑器，而不用改动父组件 HeroesComponent。
+你可以改进 HeroesComponent，而不用改动英雄详情视图。
+将来你可以在其它组件的模板中重复使用 HeroDetailComponent。 
+-->
+<app-hero-detail [hero]="selectedHero"></app-hero-detail>
+
+
 <!-- [(ngModel)] 是 Angular 的双向数据绑定语法。
 这里把 hero.name 属性绑定到了 HTML 的 textbox 元素上，
 以便数据流可以双向流动：从 hero.name 属性流动到 textbox，
@@ -55,18 +73,18 @@ Angular CLI 在创建项目的时候就在 src/app/app.module.ts 中生成了一
 当 selectedHero 为 undefined 时，ngIf 从 DOM 中移除了英雄详情。因此也就不用担心 selectedHero 的绑定了。
 当用户选择一个英雄时，selectedHero 也就有了值，并且 ngIf 把英雄的详情放回到 DOM 中。 
 -->
-<div *ngIf="selectedHero">
+<!-- <div *ngIf="selectedHero"> -->
   <!-- 当应用启动时，selectedHero 是 undefined，设计如此。 -->
-  <div>
+  <!-- <div>
     <label
       >name:
       <input [(ngModel)]="selectedHero.name" placeholder="name" />
     </label>
-  </div>
+  </div> -->
 
   <!-- 绑定表达式中的 uppercase 位于管道操作符（ | ）的右边，用来调用内置管道 UppercasePipe。
 管道 是格式化字符串、金额、日期和其它显示数据的好办法。 Angular 发布了一些内置管道，而且你还可以创建自己的管道。 -->
-  <h2>{{ selectedHero.name | uppercase }} Details</h2>
+  <!-- <h2>{{ selectedHero.name | uppercase }} Details</h2>
   <div><span>id: </span>{{ selectedHero.id }}</div>
-  <div><span>name: </span>{{ selectedHero.name }}</div>
-</div>
+  <div><span>name: </span>{{ selectedHero.name }}</div> -->
+<!-- </div> -->
