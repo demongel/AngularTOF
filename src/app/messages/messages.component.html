@@ -1,0 +1,18 @@
+
+<!-- 
+  这个模板直接绑定到了组件的 messageService 属性上。
+*ngIf 只有在有消息时才会显示消息区。
+*ngFor 用来在一系列 <div> 元素中展示消息列表。
+Angular 的事件绑定把按钮的 click 事件绑定到了 MessageService.clear()。
+当你把 最终代码 某一页的内容添加到 messages.component.css 中时，这些消息会变得好看一些。
+刷新浏览器，页面显示出了英雄列表。 滚动到底部，就会在消息区看到来自 HeroService 的消息。 点击“清空”按钮，消息区不见了。 
+-->
+<div *ngIf="messageService.messages.length">
+    <h2>Messages</h2>
+    <!-- 创建一个clear的按钮 关联到messageService的clear()方法 -->
+    <button class="clear"
+            (click)="messageService.clear()">clear</button>
+    <!-- 调用messageService 的messages 列表展示 -->
+    <div *ngFor='let message of messageService.messages'> {{message}} </div>
+  
+  </div>

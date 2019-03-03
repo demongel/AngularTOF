@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
 import { AppComponent } from './app.component';
 import { HeroesComponent } from './heroes/heroes.component';
 import { HeroDetailComponent } from './hero-detail/hero-detail.component';
+import { MessagesComponent } from './messages/messages.component';
 
 // 把 FormsModule 添加到 @NgModule 元数据的 imports 数组中，这里是该应用所需外部模块的列表。
 // 每个组件都必须声明在（且只能声明在）一个 NgModule 中。
@@ -14,7 +15,8 @@ import { HeroDetailComponent } from './hero-detail/hero-detail.component';
    declarations: [
       AppComponent,
       HeroesComponent,
-      HeroDetailComponent
+      HeroDetailComponent,
+      MessagesComponent
    ],
    imports: [
       BrowserModule,
