@@ -57,4 +57,11 @@ export class HeroDetailComponent implements OnInit {
   goBack(): void {
     this.location.back();
   }
+
+  //html相当于view，点击方法设置在组件中
+  // 组件通过调用服务（ViewModel）来处理数据
+  save(): void {
+    this.heroService.updateHero(this.hero)
+      .subscribe(() => this.goBack());
+  }
 }

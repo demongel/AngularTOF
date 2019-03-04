@@ -10,6 +10,13 @@ import { MessagesComponent } from './messages/messages.component';
 import { AppRoutingModule } from './app-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
+// 网络请求
+import { HttpClientModule }    from '@angular/common/http';
+
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { InMemoryDataService }  from './in-memory-data.service';
+import { HeroSearchComponent } from './hero-search/hero-search.component';
+
 
 // 把 FormsModule 添加到 @NgModule 元数据的 imports 数组中，这里是该应用所需外部模块的列表。
 // 每个组件都必须声明在（且只能声明在）一个 NgModule 中。
@@ -20,17 +27,23 @@ import { DashboardComponent } from './dashboard/dashboard.component';
       HeroesComponent,
       HeroDetailComponent,
       MessagesComponent,
-      DashboardComponent
+      DashboardComponent,
+      HeroSearchComponent
    ],
    imports: [
       BrowserModule,
       FormsModule,
-      AppRoutingModule
-
+      AppRoutingModule,
+      HttpClientModule,
+      // forRoot() 配置方法接受一个 InMemoryDataService 类（初期的内存数据库）作为参数。
+      HttpClientInMemoryWebApiModule.forRoot(
+         InMemoryDataService, { dataEncapsulation: false }
+       )
    ],
    providers: [],
    bootstrap: [
       AppComponent
    ]
 })
+
 export class AppModule { }
