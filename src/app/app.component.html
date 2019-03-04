@@ -6,6 +6,30 @@
 </h1>
 
 <!-- app-heroes 定义在 heroes Component中的selector -->
-<app-heroes></app-heroes>
+<!-- <app-heroes></app-heroes> -->
+
+<!-- 添加一个nav的导航，并在其中放一个链接 <a> 元素，
+  当点击它时，就会触发一个到 HeroesComponent 的导航 -->
+<nav>
+  <a routerLink="/heroes">Heroes</a>
+</nav>
+
+<nav>
+  <a routerLink="/dashboard">Dashboard</a>
+</nav>
+
+<!-- 替换为路由出口 -->
+<!-- <router-outlet> 会告诉路由器要在哪里显示路由的视图。
+    能在 AppComponent 中使用 RouterOutlet，
+    是因为 AppModule 导入了 AppRoutingModule，
+    而 AppRoutingModule 中导出了 RouterModule。 -->
+
+<!-- 
+    routerLink 属性的值为 "/heroes"，
+    路由器会用它来匹配出指向 HeroesComponent 的路由。 
+    routerLink 是 RouterLink 指令的选择器，它会把用户的点击转换为路由器的导航操作。 
+    它是 RouterModule 中的另一个公共指令。 
+  -->
+<router-outlet></router-outlet>
 
 <app-messages></app-messages>

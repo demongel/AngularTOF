@@ -41,12 +41,12 @@ export class HeroesComponent implements OnInit {
   heroes: Hero[];
 
   // 添加一个属性 先不赋值
-  selectedHero: Hero;
+  // selectedHero: Hero;
   // 添加一个onSelect方法，此时给selectHero赋值
 
-  onSelect(hero: Hero): void {
-    this.selectedHero = hero;
-  }
+  // onSelect(hero: Hero): void {
+  //   this.selectedHero = hero;
+  // }
 
   // constructor() {}
   // 在构造函数中  导入服务

@@ -1,11 +1,11 @@
-import { Injectable } from '@angular/core';
-import { Hero } from './hero';
-import { HEROES } from './mock-heroes';
+import { Injectable } from "@angular/core";
+import { Hero } from "./hero";
+import { HEROES } from "./mock-heroes";
 
 // 从 RxJS 中导入 Observable 和 of 符号。
-import { Observable, of } from 'rxjs';
+import { Observable, of } from "rxjs";
 
-import { MessageService } from './message.service';
+import { MessageService } from "./message.service";
 
 /** 
  * 这个新的服务导入了 Angular 的 Injectable 符号，
@@ -29,38 +29,42 @@ HeroService 类将会提供一个可注入的服务，
  */
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class HeroService {
-
   //  构造中引入
-  // 这是一个典型的“服务中的服务”场景： 
+  // 这是一个典型的“服务中的服务”场景：
   // 把 MessageService 注入到了 HeroService 中，
   // 而 HeroService 又被注入到了 HeroesComponent 中。
-  constructor(private messageService: MessageService) { }
+  constructor(private messageService: MessageService) {}
 
-//  添加获取英雄的方法
-// getHeroes(): Hero[] {
-//   return HEROES;
-// }
+  //  添加获取英雄的方法
+  // getHeroes(): Hero[] {
+  //   return HEROES;
+  // }
 
-/**
+  /**
  * of(HEROES) 会返回一个 Observable<Hero[]>，它会发出单个值，这个值就是这些模拟英雄的数组。
 在 HTTP 教程中，你将会调用 HttpClient.get<Hero[]>() 它也同样返回一个 Observable<Hero[]>，
 它也会发出单个值，这个值就是来自 HTTP 响应体中的英雄数组。
  * @param HEROES 
  */
 
-// getHeroes(): Observable<Hero[]> {
-//   return of(HEROES);
-// }
+  // getHeroes(): Observable<Hero[]> {
+  //   return of(HEROES);
+  // }
 
+  getHeroes(): Observable<Hero[]> {
+    // TODO: send the message _after_ fetching the heroes
+    this.messageService.add("HeroService: fetched heroes");
+    return of(HEROES);
+  }
 
-getHeroes(): Observable<Hero[]> {
-  // TODO: send the message _after_ fetching the heroes
-  this.messageService.add('HeroService: fetched heroes');
-  return of(HEROES);
-}
-
-
+  getHero(id: number): Observable<Hero> {
+    // TODO: send the message _after_ fetching the hero
+    // 反引号 ( ` ) 用于定义 JavaScript 的 模板字符串字面量，以便嵌入 id。
+    this.messageService.add(`HeroService: fetched hero id=${id}`);
+    // 从HEROES中找到id和传入id相同的hero
+    return of(HEROES.find(hero => hero.id === id));
+  }
 }
